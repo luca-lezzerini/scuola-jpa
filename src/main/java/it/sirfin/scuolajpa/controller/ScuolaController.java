@@ -12,41 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class ScuolaController {
-    
+
     @Autowired
     ScuolaService scuolaService;
-    
+
     @RequestMapping("/inizializza")
     public void inizializza() {
-        List<Docente> docenti = new ArrayList<>();
-        docenti.add(new Docente("Benjamin", "Franklin"));
-        docenti.add(new Docente("Elio", "Plutonio"));
-        docenti.add(new Docente("Paolino", "Paperino"));
-        docenti.add(new Docente("Luca", "Lezzerini"));
-        docenti.add(new Docente("Marie", "Curie"));
-        
-        scuolaService.cancellaDocenti();
-        docenti.forEach(t -> scuolaService.inserisciDocente(t));
-
-// Forma Alternativa
-//        for (Docente docente : docenti) {
-//            scuolaService.inserisciDocente(docente);
-//        }
-        List<Docente> lista = scuolaService.trovaTuttiIDocenti();
-        lista.forEach(t -> System.out.println(t));
-        
-        lista.stream()
-                .filter(s -> s.getId() % 2 == 1)
-                .forEach(s -> scuolaService.cancellaDocente(s));
-        
-        List<Docente> lista2 = scuolaService.trovaTuttiIDocenti();
-        lista2.forEach(t -> System.out.println(t));
-        
-        
-//        for (Docente docente : lista) {
-//            if (docente.getId() % 2 == 1){
-//                scuolaService.cancellaDocente(docente);
-//            }
-//        }
+        scuolaService.inizializzazione();
     }
 }
