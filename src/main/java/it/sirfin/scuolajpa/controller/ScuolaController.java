@@ -39,6 +39,10 @@ public class ScuolaController {
                 .filter(s -> s.getId() % 2 == 1)
                 .forEach(s -> scuolaService.cancellaDocente(s));
         
+        List<Docente> lista2 = scuolaService.trovaTuttiIDocenti();
+        lista2.forEach(t -> System.out.println(t));
+        
+        
 //        for (Docente docente : lista) {
 //            if (docente.getId() % 2 == 1){
 //                scuolaService.cancellaDocente(docente);
